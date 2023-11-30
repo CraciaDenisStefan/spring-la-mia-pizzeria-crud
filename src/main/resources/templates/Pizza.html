@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+ <h1>Dettagli Pizza</h1>
+    <div th:if="${pizza != null}">
+        <p>
+            Nome: <span th:text="${pizza.nome}"></span><br>
+            Descrizione: <span th:text="${pizza.descrizione}"></span><br>
+            Foto: <span th:text="${pizza.fotoUrl}"></span><br>
+            Prezzo: <span th:text="${pizza.prezzo}"></span>
+        </p>
+    </div>
+    <div th:if="${pizza == null}">
+        <p>La pizza non è stata trovata.</p>
+    </div>
+</body>
+</html>
