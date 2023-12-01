@@ -3,30 +3,38 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
 <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
 </head>
-<body>
+<body class="body-background">
 	<header th:insert="fragments :: header"></header>
-	<div class="container">
-			<h1>Pizze:</h1>
+	<div class="container text-white">
+			<h1>Pizze:</h1>	
+			 <i class="fas fa-eye"></i>
+			<form class="d-flex my-4 col-3" role="search">
+		        <input class="form-control me-2 bg-transparent" type="search" placeholder="Search" aria-label="Search" name="search" th:value="${search}">
+		        <button class="btn btn-outline-success" type="submit">Search</button>
+     		 </form>	
 			  <div th:if="${#lists.isEmpty(pizze)}">
 	            <p>Nessuna pizza disponibile al momento.</p>
 	        </div>
-			<table class="table">
+			<table class="table table-bordered">
             <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Descrizione</th>
-                    <th>Foto</th>
-                    <th>Prezzo</th>
+                <tr >
+					<th class="bg-transparent"></th>
+                    <th class="bg-transparent">Nome</th>
+                    <th class="bg-transparent">Descrizione</th>
+                    <th class="bg-transparent">Foto</th>
+                    <th class="bg-transparent">Prezzo</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="pizza : ${pizze}" >
-                    <td><a th:href="@{/pizza/{id}(id=${pizza.id})}" th:text="${pizza.nome}" class="text-decoration-none"></a></td>
-                    <td th:text="${pizza.descrizione}"></td>
-                    <td><img th:src="${pizza.fotoUrl}" alt="Pizza Image" style="max-width: 100px; max-height: 100px;"></td>
-                    <td th:text="'€ ' + ${pizza.prezzo}"></td>
+					<td class="bg-transparent "><a th:href="@{/pizza/{id}(id=${pizza.id})}"  class="text-decoration-none text-warning">Apri</a></td>
+                    <td class="bg-transparent text-white" th:text="${pizza.nome}"></a></td>
+                    <td class="bg-transparent text-white" th:text="${pizza.descrizione}"></td>
+                    <td class="bg-transparent text-white"><img th:src="${pizza.fotoUrl}" alt="Pizza Image" style="max-width: 100px; max-height: 100px;"></td>
+                    <td class="bg-transparent text-white" th:text="'€ ' + ${pizza.prezzo}"></td>
                 </tr>
             </tbody>
         </table>
