@@ -2,7 +2,7 @@ package org.java.spring.db.serve;
 
 import java.util.List;
 
-import org.java.spring.db.pojo.Pizzeria;
+import org.java.spring.db.pojo.Pizza;
 import org.java.spring.db.repo.PizzeriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,22 +14,22 @@ public class Pizzeriaservice {
 	
 	private PizzeriaRepository pizzeriaRepository;
 	
-	public List<Pizzeria> findAll() {
+	public List<Pizza> findAll() {
 		
 		return pizzeriaRepository.findAll();
 	}
-	public Pizzeria findById(int id) {
+	public Pizza findById(int id) {
 		
 		return pizzeriaRepository.findById(id).get();
 	}
 	
-	public List<Pizzeria> findByNome(String query) {
+	public List<Pizza> findByNome(String query) {
 		
 		return pizzeriaRepository.findByNomeContainingIgnoreCase(query);
 	}
-	public void save(Pizzeria pizzeria) {
+	public void save(Pizza pizza) {
 		
-		pizzeriaRepository.save(pizzeria);
+		pizzeriaRepository.save(pizza);
 	}
 	
 	
