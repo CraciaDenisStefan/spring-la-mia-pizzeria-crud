@@ -31,6 +31,9 @@ public class Pizzeriaservice {
 		
 		pizzeriaRepository.save(pizza);
 	}
-	
+	public void delete(Pizza pizza) {
+		
+		pizzeriaRepository.delete(pizza);
+	}
 	
 }

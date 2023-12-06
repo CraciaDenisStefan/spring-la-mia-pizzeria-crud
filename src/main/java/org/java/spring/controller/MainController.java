@@ -61,6 +61,40 @@ public class MainController {
 			BindingResult bindingResult) {
 		
 				
+		return savePizza(model, pizza, bindingResult);
+	}
+	
+	@GetMapping("/pizza/edit/{id}")
+	public String editPizza(Model model,
+			@PathVariable int id) {
+		
+		Pizza pizza = pizzeriaService.findById(id);
+		model.addAttribute("pizza", pizza);
+		
+		return "pizza-form";
+	}
+	@PostMapping("/pizza/edit/{id}")
+	public String updateBook(Model model,
+			@Valid @ModelAttribute Pizza pizza, 
+			BindingResult bindingResult) {
+		
+		return savePizza(model, pizza, bindingResult);
+	}
+	
+	@PostMapping("/pizza/delete/{id}")
+	public String deletePizza(@PathVariable int id) {
+		
+		Pizza pizza = pizzeriaService.findById(id);
+		pizzeriaService.delete(pizza);
+			
+		return "redirect:/";
+	}
+	
+	private String savePizza(Model model,
+			@Valid @ModelAttribute Pizza pizza, 
+			BindingResult bindingResult) {
+		
+		
 		if (bindingResult.hasErrors()) {
 			System.out.println(bindingResult);
 			model.addAttribute("pizza", pizza);
@@ -71,4 +105,5 @@ public class MainController {
 			  
 		return "redirect:/";
 	}
+	
 }
